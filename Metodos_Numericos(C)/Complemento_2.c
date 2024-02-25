@@ -9,12 +9,17 @@ int main () {
     printf("Digite quantas casas vai ter seu numero binario");
     scanf("%i", &casas);
     aloca(casas, &ptr);
+    for (int i = 0; i < casas; i++, ptr++) {
+        printf("Insira um numero: ");
+        scanf("%i", ptr);
 
-
+    }
+    free(ptr);
 
 }
 
 void aloca(int casas, int **p) {
-
-
+    *p = ((int*)malloc(casas * sizeof(int)));
+    if (*p == NULL)
+        exit(1);
 }
