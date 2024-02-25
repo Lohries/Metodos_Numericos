@@ -11,7 +11,7 @@ int main () {
     aloca(casas, &ptr);
     for (int i = 0; i < casas; i++, ptr++) {
         printf("Insira um numero: ");
-        scanf("%i", ptr);
+        scanf("%i", &ptr);
 
     }
     for (int i = 0; i < casas; i++, ptr--) {
