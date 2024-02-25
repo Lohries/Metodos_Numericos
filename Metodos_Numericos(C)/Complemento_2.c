@@ -14,6 +14,12 @@ int main () {
         scanf("%i", ptr);
 
     }
+    for (int i = 0; i < casas; i++, ptr--) {
+        if (*ptr == 1)
+            *ptr = 0;
+        else 
+            *ptr = 1;
+    }
     free(ptr);
 
 }
