@@ -20,6 +20,14 @@ int main () {
         else 
             *ptr = 1;
     }
+    ptr = ptr + (sizeof(int) * casas);
+    for (int i = 0; i < casas; i++, ptr--) {
+        if (*ptr == 1)
+            *ptr += 1;
+        else 
+            printf("Nada");
+    }
+    
     free(ptr);
 
 }
