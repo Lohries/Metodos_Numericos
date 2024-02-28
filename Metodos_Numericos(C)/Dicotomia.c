@@ -5,6 +5,7 @@ float sine();
 float cossine();
 float tangent();
 float none();
+float coef();
 
 int main () {
     int grau, model;
@@ -30,12 +31,43 @@ int main () {
 
 }
 
-float none(float grau, float pointA_x, float pointA_y, float pointB_x, float pointB_y) {
+float none(int grau, float pointA_x, float pointA_y, float pointB_x, float pointB_y) {
     printf("Insert the biggest expoent in your equation: ");
     scanf("%i", &grau);
     printf("Insert the point A, x and y in order");
     scanf("%f, %f", &pointA_x, &pointA_y);
     printf("Insert the point B, x and y in order");
     scanf("%f, %f", &pointB_x, &pointB_y);
+    if (grau == 1) {
+    
 
+    }
+
+
+    else if (grau == 2) {
+
+    }
+
+
+    else if (grau == 3) {
+
+
+    }
+
+
+
+    else {
+
+
+    }
+
+}
+
+float get_coef() {
+   
+    float coef;
+    printf("Insert the coef: ");
+    scanf("%f", &coef);
+
+    
 }
