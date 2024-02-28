@@ -4,8 +4,9 @@
 float sine();
 float cossine();
 float tangent();
-float none();
-float coef();
+float none(int grau, float pointA_x, float pointA_y, float pointB_x, float pointB_y);
+float get_coef();
+
 
 int main () {
     int grau, model;
@@ -14,12 +15,15 @@ int main () {
     printf("Insert based on the type of function (1-sin  2-cos  3-tg  4-None of thos)");
     scanf("%i", &model);
     if (model == 1) {
+        printf("The variable is inside of the sin");
 
     }
     else if (model == 2) {
+        printf("The variable is inside of the cos");
 
     }
     else if (model == 3) {
+        printf("The variable is inside of the tg");
 
     }
     else {
@@ -38,28 +42,26 @@ float none(int grau, float pointA_x, float pointA_y, float pointB_x, float point
     scanf("%f, %f", &pointA_x, &pointA_y);
     printf("Insert the point B, x and y in order");
     scanf("%f, %f", &pointB_x, &pointB_y);
-    if (grau == 1) {
+    float a, b, c, d;
+    float function;
+    float x;
+    if (grau == 2) {
+        a = get_coef();
+        b = get_coef();
+        c = get_coef();
+        function = (((a * pow(x, grau))) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)));
     
-
     }
-
-
-    else if (grau == 2) {
-
-    }
-
 
     else if (grau == 3) {
-
-
+        a = get_coef();
+        b = get_coef();
+        c = get_coef();
+        d = get_coef();
+        function = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
+        
     }
 
-
-
-    else {
-
-
-    }
 
 }
 
@@ -68,6 +70,6 @@ float get_coef() {
     float coef;
     printf("Insert the coef: ");
     scanf("%f", &coef);
-
-    
+    return coef;  
 }
+
