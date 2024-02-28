@@ -1,8 +1,8 @@
 
 section .text ;SHF_EXECINSTR
-global _start
+.global _start
 _start:
-    mov edx, len
+    mov edx, len  ;1-destination 2-source
     mov ecx, msg
     mov ebx, 1
     mov eax, 4
