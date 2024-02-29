@@ -73,6 +73,12 @@ float none(int grau, float pointA_x, float pointB_x) {
         flag = comparasion(k);
 
     }
+    if (flag == 'S')  {
+        x = (pointB_x + pointA_x)/2;
+
+
+
+    }
 
 
 }
