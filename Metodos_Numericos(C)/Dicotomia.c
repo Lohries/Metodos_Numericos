@@ -50,8 +50,11 @@ float none(int grau, float pointA_x, float pointB_x) {
         a = get_coef();
         b = get_coef();
         c = get_coef();
+        x = pointA_x;
         function1 = (((a * pow(x, grau))) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)));
-    
+        x = pointB_x;
+        function2 = (((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2))));
+        k = function1 * function2;
     }
 
     else if (grau == 3) {
@@ -64,7 +67,8 @@ float none(int grau, float pointA_x, float pointB_x) {
         x = pointB_x;
         function2 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
         k = function1 * function2;
-        
+
+
     }
 
 
