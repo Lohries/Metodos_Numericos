@@ -58,6 +58,7 @@ float none(int grau, float pointA_x, float pointB_x) {
         b = get_coef();
         c = get_coef();
         d = get_coef();
+        x = pointA_x;
         function = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
         
     }
