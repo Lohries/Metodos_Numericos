@@ -1,9 +1,20 @@
 .global _start
 _start:
     ldr r0, =input ;storing the input 
-    ldr r1, =word ;storing the word
+    ldr r1, =weight ;storing the word
     mov r2, #3 ;bias
-    
+    mov r3, [r0]
+    mul r3, r3, [r1]
+    add r3, r3, [r0, #4]
+    mul r3, r3, [r1, #4]
+    add r3, r3, [r0, #8]
+    mul r3, r3, [r1, #8]
+    add r3, r3, [r0, #12]
+    mul r3, r3, [r1, #12]
+    add r3, r3, [r0, #16]
+    mul r3, r3, [r1, #16]
+    add r3, r3, r2
+
 
 
 
