@@ -44,6 +44,7 @@ float none(int grau, float pointA_x, float pointB_x) {
     scanf("%f", &pointB_x);
     float a, b, c, d;
     float function1, function2;
+    float k;
     float x;
     if (grau == 2) {
         a = get_coef();
@@ -62,6 +63,7 @@ float none(int grau, float pointA_x, float pointB_x) {
         function1 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
         x = pointB_x;
         function2 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
+        k = function1 * function2;
         
     }
 

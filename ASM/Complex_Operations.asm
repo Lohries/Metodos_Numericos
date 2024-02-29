@@ -5,4 +5,11 @@ _start:
     mov r1, #5 ;b
     mov r2, #9 ;c
     mov r3, #10 ;d
+
+    mul r4, #2, r0
+    add r4, r4, r1
+    add r5, #5, r2
+    add r6, r4, r5
+    
+    
     
