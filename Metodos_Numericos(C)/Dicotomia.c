@@ -6,6 +6,7 @@ float cossine();
 float tangent();
 float none(int grau, float pointA_x, float pointB_x);
 float get_coef();
+float comparasion(float factor);
 
 
 int main () {
@@ -46,6 +47,7 @@ float none(int grau, float pointA_x, float pointB_x) {
     float function1, function2;
     float k;
     float x;
+    char flag;
     if (grau == 2) {
         a = get_coef();
         b = get_coef();
@@ -55,6 +57,7 @@ float none(int grau, float pointA_x, float pointB_x) {
         x = pointB_x;
         function2 = (((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2))));
         k = function1 * function2;
+        flag = comparasion(k);
     }
 
     else if (grau == 3) {
@@ -67,7 +70,7 @@ float none(int grau, float pointA_x, float pointB_x) {
         x = pointB_x;
         function2 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
         k = function1 * function2;
-
+        flag = comparasion(k);
 
     }
 
@@ -80,5 +83,19 @@ float get_coef() {
     printf("Insert the coef: ");
     scanf("%f", &coef);
     return coef;  
+}
+
+float comparasion(float factor) {
+    char stop;
+    if (factor < 0) {
+        stop = 'S';
+        return stop;
+
+    }
+    else {
+        stop = 'N';
+        return stop;
+    }
+        
 }
 

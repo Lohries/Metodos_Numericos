@@ -14,6 +14,8 @@ _start:
     add r3, r3, [r0, #16]
     mul r3, r3, [r1, #16]
     add r3, r3, r2
+    
+
 
 
 
