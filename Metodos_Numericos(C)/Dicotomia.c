@@ -43,13 +43,13 @@ float none(int grau, float pointA_x, float pointB_x) {
     printf("Insert the point B, x ");
     scanf("%f", &pointB_x);
     float a, b, c, d;
-    float function;
+    float function1, function2;
     float x;
     if (grau == 2) {
         a = get_coef();
         b = get_coef();
         c = get_coef();
-        function = (((a * pow(x, grau))) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)));
+        function1 = (((a * pow(x, grau))) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)));
     
     }
 
@@ -59,7 +59,9 @@ float none(int grau, float pointA_x, float pointB_x) {
         c = get_coef();
         d = get_coef();
         x = pointA_x;
-        function = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
+        function1 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
+        x = pointB_x;
+        function2 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
         
     }
 
