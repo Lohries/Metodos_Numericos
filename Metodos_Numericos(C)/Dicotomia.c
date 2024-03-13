@@ -1,107 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
-float sine();
-float cossine();
-float tangent();
-float none(int grau, float pointA_x, float pointB_x);
-float get_coef();
-float comparasion(float factor);
+void aloca(float **p, int grau);
 
 
 int main () {
-    int grau, model;
-    float pointA_x, pointB_x;
-    float pointA_y, pointB_y;
-    char flag;
-    printf("Insert based on the type of function (1-sin  2-cos  3-tg  4-None of thos)");
-    scanf("%i", &model);
-    if (model == 1) {
-        printf("The variable is inside of the sin");
-
+    int grau;
+    float *ptr = NULL;
+    float erro, intervaloA, intervaloB;
+    printf("Digite o grau do polinomio: ");
+    scanf("%f", &grau);
+    aloca(&ptr, grau);
+    for (int i = 0; i < grau; ptr++) {
+        printf("Digite os ceoficientes do mqior grqu qo menor");
+        scanf("%f", ptr);
     }
-    else if (model == 2) {
-        printf("The variable is inside of the cos");
-
-    }
-    else if (model == 3) {
-        printf("The variable is inside of the tg");
-
-    }
-    else {
-        none(grau, pointA_x, pointB_x);
-
-    }
-  
+    printf("Digite o valor do erro: ");
+    scanf("%f", &erro);
+    printf("Digite o intervalo de x: ");
+    scanf("%f", &intervaloA);
+    scanf("%f", &intervaloB);
 
 }
 
-float none(int grau, float pointA_x, float pointB_x) {
-    printf("Insert the biggest expoent in your equation: ");
-    scanf("%i", &grau);
-    printf("Insert the point A, x");
-    scanf("%f", &pointA_x);
-    printf("Insert the point B, x ");
-    scanf("%f", &pointB_x);
-    float a, b, c, d;
-    float function1, function2;
-    float k;
-    float x;
-    char flag;
-    if (grau == 2) {
-        a = get_coef();
-        b = get_coef();
-        c = get_coef();
-        x = pointA_x;
-        function1 = (((a * pow(x, grau))) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)));
-        x = pointB_x;
-        function2 = (((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2))));
-        k = function1 * function2;
-        flag = comparasion(k);
-    }
-
-    else if (grau == 3) {
-        a = get_coef();
-        b = get_coef();
-        c = get_coef();
-        d = get_coef();
-        x = pointA_x;
-        function1 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
-        x = pointB_x;
-        function2 = ((a * pow(x, grau)) + (b * pow(x, (grau-1))) + (c * pow(x, grau-2)) + (d * pow(x, grau-3)));
-        k = function1 * function2;
-        flag = comparasion(k);
-
-    }
-    if (flag == 'S')  {
-        x = (pointB_x + pointA_x)/2;
-
-
-
-    }
-
+void aloca (float **p, int grau) {
+    *p = ((float)realloc(*p, grau * sizeof(float)))
+    if (*p == NULL)
+        exit(1);
 
 }
-
-float get_coef() {
-   
-    float coef;
-    printf("Insert the coef: ");
-    scanf("%f", &coef);
-    return coef;  
-}
-
-float comparasion(float factor) {
-    char stop;
-    if (factor < 0) {
-        stop = 'S';
-        return stop;
-
-    }
-    else {
-        stop = 'N';
-        return stop;
-    }
-        
-}
-
