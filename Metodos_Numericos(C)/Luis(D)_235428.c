@@ -10,44 +10,53 @@ void preenchimento(float **p, int grau_p);
 int dicotomia(float intervaloA_D, float intervaloB_D, float **p, int grau_D, float intervaloM);
 
 int main() {
+    char controle;
     int grau, numero_interar, flag_controle;
     float precisao, intervaloA, intervaloB, intervalo_main;
-    float *ptr = NULL;
-    printf("\nInsira o grau do polinomio: ");
-    scanf("%i", &grau);
-    printf("\nInsira a precisao: ");
-    scanf("%f", &precisao);
-    printf("\nInsira menor extremo: ");
-    scanf("%f", &intervaloA);
-    printf("\nInsira o extremo maior: ");
-    scanf("%f", &intervaloB);
-    numero_interar = calculando_k(precisao, intervaloA, intervaloB);
-    intervalo_main = intervaloB - intervaloA;
-    float intervaloM = (intervaloA + intervaloB)/2;
-    printf("\nObtendo a funcao do usuario....\n");
-    aloca(grau, &ptr);
-    preenchimento(&ptr, grau);
+    do {
+        
+        float *ptr = NULL;
+        printf("\nInsira o grau do polinomio: ");
+        scanf("%i", &grau);
+        printf("\nInsira a precisao: ");
+        scanf("%f", &precisao);
+        printf("\nInsira menor extremo: ");
+        scanf("%f", &intervaloA);
+        printf("\nInsira o extremo maior: ");
+        scanf("%f", &intervaloB);
+        numero_interar = calculando_k(precisao, intervaloA, intervaloB);
+        intervalo_main = intervaloB - intervaloA;
+        float intervaloM = (intervaloA + intervaloB)/2;
+        printf("\nObtendo a funcao do usuario....\n");
+        aloca(grau, &ptr);
+        preenchimento(&ptr, grau);
 
-    while(numero_interar > 0 && intervalo_main > precisao) { // Correção aqui
-        flag_controle = dicotomia(intervaloA, intervaloB, &ptr, grau, intervaloM);
-        printf("\n%f\n", intervaloM);
-        if (flag_controle == -1) { // Correção aqui
-            intervaloA = intervaloM;
+        while(numero_interar > 0 && intervalo_main > precisao) { 
+            flag_controle = dicotomia(intervaloA, intervaloB, &ptr, grau, intervaloM);
+            printf("\n%f\n", intervaloM);
+            if (flag_controle == -1) { 
+                intervaloA = intervaloM;
+            }
+            else if (flag_controle == 1) { 
+                intervaloB = intervaloM;
+            }
+            else { 
+                break; 
+            }
+            intervalo_main = intervaloB - intervaloA; 
+            intervaloM = (intervaloA + intervaloB) / 2;
+            numero_interar--; 
         }
-        else if (flag_controle == 1) { // Correção aqui
-            intervaloB = intervaloM;
-        }
-        else { // Correção aqui
-            break; // Se flag_controle for 0, já encontramos a raiz
-        }
-        intervalo_main = intervaloB - intervaloA; // Atualização da condição de parada
-        intervaloM = (intervaloA + intervaloB) / 2;
-        numero_interar--; 
+   
+        printf("\nRESULTADO FINAL %f", intervaloM);  
+        printf("Digite se 's' para continuar e 'n' para parar");
+        scanf("%c", &controle);
+        free(ptr); 
     }
-    printf("\nFINALIZADA A DICOTOMIA");
-    printf("\nRESULTADO FINAL %f", intervaloM);
-
-    free(ptr); 
+    while(controle == 's');
+  
+    
+    
     return 0;
 }
 
@@ -90,13 +99,13 @@ int dicotomia(float intervaloA_D, float intervaloB_D, float **p, int grau_D, flo
     printf("\nFuncaoA: %f", funcaoA);
     printf("\nFuncaoB: %f", funcaoB);
     printf("\nFuncaoM: %f", funcaoM);
-    if (funcaoA * funcaoM > funcaoB * funcaoM) {
-        return -1; // Mover para a esquerda
+    if (funcaoA * funcaoM > 0 && funcaoA * funcaoM < 0) {
+        return -1; 
     }
-    else if (funcaoA * funcaoM < funcaoB * funcaoM) {
-        return 1; // Mover para a direita
+    else if (funcaoA * funcaoM < 0 && funcaoB * funcaoM > 0) {
+        return 1;
     }
     else {
-        return 0; // Encontramos a raiz
+        return 0;
     }  
 }
