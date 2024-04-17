@@ -1,3 +1,5 @@
+//Kauan Victor Marques RA:235003 Luis Henrique Telo Ladeira Mota RA:235428 Patrick Vieira Leo RA: 234868
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -26,17 +28,20 @@ int main() {
     aloca(grau, &ptr);
     preenchimento(&ptr, grau);
 
-    while(numero_interar > 0 && intervalo_main > precisao) {
+    while(numero_interar > 0 && intervalo_main > precisao) { // Correção aqui
         flag_controle = dicotomia(intervaloA, intervaloB, &ptr, grau, intervaloM);
-        if (flag_controle == 1) {
+        printf("\n%f\n", intervaloM);
+        if (flag_controle == -1) { // Correção aqui
             intervaloA = intervaloM;
-            intervalo_main = intervaloB - intervaloM;
         }
-        else {
+        else if (flag_controle == 1) { // Correção aqui
             intervaloB = intervaloM;
-            intervalo_main = intervaloA - intervaloM;
-
         }
+        else { // Correção aqui
+            break; // Se flag_controle for 0, já encontramos a raiz
+        }
+        intervalo_main = intervaloB - intervaloA; // Atualização da condição de parada
+        intervaloM = (intervaloA + intervaloB) / 2;
         numero_interar--; 
     }
     printf("\nFINALIZADA A DICOTOMIA");
@@ -49,6 +54,7 @@ int main() {
 int calculando_k(float precisao_k, float intervaloA_k, float intervaloB_k) {
     double k;
     k = (log(intervaloB_k - intervaloA_k) - log(precisao_k)) / log(2);
+    printf("O valor de k foi de %f", round(k));
     return round(k);
 }
 
@@ -73,6 +79,8 @@ int dicotomia(float intervaloA_D, float intervaloB_D, float **p, int grau_D, flo
     float funcaoA = 0;
     float funcaoB = 0;
     float funcaoM = 0;
+    printf("\n%f\n", intervaloA_D);
+    printf("\n%f\n", intervaloB_D);
     
     for (int i = grau_D; i >= 0; i--) {
         funcaoA += ((*p)[i] * pow(intervaloA_D, i));
@@ -81,13 +89,14 @@ int dicotomia(float intervaloA_D, float intervaloB_D, float **p, int grau_D, flo
     }
     printf("\nFuncaoA: %f", funcaoA);
     printf("\nFuncaoB: %f", funcaoB);
-    printf("\nFuncaoB: %f", funcaoB);
-    if (funcaoA*funcaoM > 0 && funcaoB*funcaoM < 0) {
-        return -1;
+    printf("\nFuncaoM: %f", funcaoM);
+    if (funcaoA * funcaoM > funcaoB * funcaoM) {
+        return -1; // Mover para a esquerda
     }
-
-    if (funcaoA*funcaoM < 0 && funcaoB*funcaoM > 0) {
-        return 1;
+    else if (funcaoA * funcaoM < funcaoB * funcaoM) {
+        return 1; // Mover para a direita
     }
-    
+    else {
+        return 0; // Encontramos a raiz
+    }  
 }
