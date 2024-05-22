@@ -11,6 +11,8 @@ int main () {
 
     
 
+    
+
     float matrix[equations][variable + 1];
     float multiplier;
 
